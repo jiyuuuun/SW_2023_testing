@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "78551278992",
+    "firebase_url": "https://diemo-240d0-default-rtdb.firebaseio.com",
+    "project_id": "diemo-240d0",
+    "storage_bucket": "diemo-240d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78551278992:android:610104d5c741915635ff15",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78551278992-0cpjha59g0uvrs48ueq7lqm8a2oj1js6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd5eI-XtWFYCbfdQKss0CS3TLymTkqN3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78551278992-0cpjha59g0uvrs48ueq7lqm8a2oj1js6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
