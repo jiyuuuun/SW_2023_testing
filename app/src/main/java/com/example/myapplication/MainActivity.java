@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
@@ -18,11 +17,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        findViewById(R.id.btn_logout).setOnClickListener(v -> {
+        Button btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(v -> {
             mFirebaseAuth.signOut();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         });
+        //탈퇴처리
+        //mFirebaseAuth.getCurrentUser().delete();
     }
 }

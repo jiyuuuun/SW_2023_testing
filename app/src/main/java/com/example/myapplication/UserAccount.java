@@ -9,7 +9,7 @@ public class UserAccount {
     public void setIdToken(String idToken) {this.idToken = idToken;}
     public String getIdToken() {return idToken;}
 
-    public void setEmail(String emailId) {this.email = email;}
+    public void setEmail(String email) {this.email = email;}
     public String getEmail() {return email;}
 
     public void setPassword(String password) {this.password = password;}

@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private EditText et_email, et_pass;
-    private Button btn_login, btn_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +23,8 @@ public class LoginActivity extends AppCompatActivity {
 
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
-        btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_register);
+        Button btn_login = findViewById(R.id.btn_login);
+        Button btn_register = findViewById(R.id.btn_register);
 
         btn_login.setOnClickListener(view -> {
             String strEmail = et_email.getText().toString();

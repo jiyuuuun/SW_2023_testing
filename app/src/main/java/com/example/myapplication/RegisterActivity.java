@@ -16,7 +16,6 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
     private EditText et_email, et_pass;
-    private Button btn_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +23,15 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("diemo");
 
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
-        btn_register = findViewById(R.id.btn_register);
+        Button btn_register = findViewById(R.id.btn_register);
 
         btn_register.setOnClickListener(view -> {
-            String strEmail = et_email.getText().toString();
-            String strPass = et_pass.getText().toString();
+            String strEmail = String.valueOf(et_email.getText());
+            String strPass = String.valueOf(et_pass.getText());
 
             mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPass).addOnCompleteListener(RegisterActivity.this, task -> {
                 if (task.isSuccessful()) {
