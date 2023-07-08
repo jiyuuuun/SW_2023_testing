@@ -16,16 +16,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
-    private View view;
+    private Button btn_logout;
     private Switch mode_switch;
     private TextView modeStatus;
+    private View view;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_setting, container, false);
+
         //로그아웃
         mFirebaseAuth = FirebaseAuth.getInstance();
-        Button btn_logout = view.findViewById(R.id.btn_logout);
+        btn_logout = view.findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(v -> {
             mFirebaseAuth.signOut();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
@@ -57,7 +60,6 @@ public class SettingFragment extends Fragment {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
-
         // Inflate the layout for this fragment
         return view;
     }

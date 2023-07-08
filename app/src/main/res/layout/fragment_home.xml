@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/background_color">
+    <!-- 그동안 쓴 일기와 chatGPT 답장 보기-->
 
 </LinearLayout>
 

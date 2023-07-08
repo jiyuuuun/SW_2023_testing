@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DiaryFinActivity">
+    <!-- 오늘의 일기를 작성하면 작성한 오늘의 일기와 챗GPT 답장이 보이는 화면-->
+
+</LinearLayout>

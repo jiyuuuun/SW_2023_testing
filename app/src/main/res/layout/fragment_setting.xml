@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
+    <!-- 설정 화면 / 구상은 나중에... 기능만 구현해둠 -->
 
     <Button
         android:id="@+id/btn_leave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="회원탈퇴" />
+        android:text="@string/leave"/>
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
@@ -20,18 +23,19 @@
 
     <TextView
         android:id="@+id/tv_mode"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Hello"
+        android:text="@string/app_name"
         android:textColor="@color/textcolor"
         android:textSize="20sp" />
 
     <Switch
         android:id="@+id/mode_switch"
-        android:layout_width="48dp"
+        android:layout_width="wrap_content"
+        android:switchMinWidth="60dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
 </LinearLayout>
