@@ -1,30 +1,71 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth mFirebaseAuth;
+    private BottomNavigationView bottomNavigationView;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private HomeFragment homeFragment;
+    private DiaryFragment diaryFragment;
+    private BulletinFragment bulletinFragment;
+    private SettingFragment settingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        Button btn_logout = findViewById(R.id.btn_logout);
-        btn_logout.setOnClickListener(v -> {
-            mFirebaseAuth.signOut();
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+        bottomNavigationView = findViewById(R.id.bottom_Navi);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    setFrag(0);
+                    break;
+                case R.id.diary:
+                    setFrag(1);
+                    break;
+                case R.id.bulletin:
+                    setFrag(2);
+                    break;
+                case R.id.setting:
+                    setFrag(3);
+                    break;
+            }
+            return true;
         });
-        //탈퇴처리
-        //mFirebaseAuth.getCurrentUser().delete();
+        homeFragment = new HomeFragment();
+        diaryFragment = new DiaryFragment();
+        bulletinFragment = new BulletinFragment();
+        settingFragment = new SettingFragment();
+        setFrag(0);
+    }
+    private void setFrag(int n) {
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch (n) {
+            case 0 :
+                ft.replace(R.id.container, homeFragment);
+                ft.commit();
+                break;
+            case 1 :
+                ft.replace(R.id.container, diaryFragment);
+                ft.commit();
+                break;
+            case 2 :
+                ft.replace(R.id.container, bulletinFragment);
+                ft.commit();
+                break;
+            case 3 :
+                ft.replace(R.id.container, settingFragment);
+                ft.commit();
+                break;
+        }
     }
 }

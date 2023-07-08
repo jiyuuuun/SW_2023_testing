@@ -1,55 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-=======
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
->>>>>>> origin/main
     <item
         android:id="@+id/home"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
-<<<<<<< HEAD
-        android:title="홈"/>
-=======
         android:title="홈"
-        app:showAsAction="always"
-        />
->>>>>>> origin/main
+        android:icon="@drawable/ic_home"/>
 
     <item
         android:id="@+id/diary"
         android:enabled="true"
         android:icon="@drawable/ic_diary"
-<<<<<<< HEAD
         android:title="일기"/>
-=======
-        android:title="일기"
-        app:showAsAction="always"
-        />
->>>>>>> origin/main
+
     <item
         android:id="@+id/bulletin"
         android:enabled="true"
         android:icon="@drawable/ic_bulletin"
-<<<<<<< HEAD
         android:title="게시판"/>
-=======
-        android:title="게시판"
-        app:showAsAction="always"
-        />
->>>>>>> origin/main
 
     <item
         android:id="@+id/setting"
         android:enabled="true"
         android:icon="@drawable/ic_setting"
-<<<<<<< HEAD
         android:title="설정"/>
-=======
-        android:title="설정"
-        app:showAsAction="always"
-        />
 
->>>>>>> origin/main
 </menu>
