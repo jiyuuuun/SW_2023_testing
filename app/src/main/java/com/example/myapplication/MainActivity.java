@@ -1,74 +1,30 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Switch;
-import android.widget.TextView;
+import android.widget.Button;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
-    private FragmentManager fm;
-    private FragmentTransaction ft;
-    private HomeFragment homeFragment;
-    private DiaryFragment diaryFragment;
-    private BulletinFragment bulletinFragment;
-    private SettingFragment settingFragment;
+    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView = findViewById(R.id.bottom_navi);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    setFrag(0);
-                    break;
-                case R.id.diary:
-                    setFrag(1);
-                    break;
-                case R.id.bulletin:
-                    setFrag(2);
-                    break;
-                case R.id.setting:
-                    setFrag(3);
-                    break;
-            }
-            return true;
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        Button btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(v -> {
+            mFirebaseAuth.signOut();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
-        homeFragment = new HomeFragment();
-        diaryFragment = new DiaryFragment();
-        bulletinFragment = new BulletinFragment();
-        settingFragment = new SettingFragment();
-        setFrag(0);
-    }
-    private void setFrag(int n) {
-        fm = getSupportFragmentManager();
-        ft = fm.beginTransaction();
-        switch (n) {
-            case 0:
-                ft.replace(R.id.containers, homeFragment);
-                ft.commit();
-                break;
-            case 1:
-                ft.replace(R.id.containers, diaryFragment);
-                ft.commit();
-                break;
-            case 2:
-                ft.replace(R.id.containers, bulletinFragment);
-                ft.commit();
-                break;
-            case 3:
-                ft.replace(R.id.containers, settingFragment);
-                ft.commit();
-                break;
-        }
+        //탈퇴처리
+        //mFirebaseAuth.getCurrentUser().delete();
     }
 }
