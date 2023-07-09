@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/background_color">
-    <!--일기를 다른 사람들과 공유하는 게시판-->
+    android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/background_color">
+
+        <!-- 하나의 게시물 레이아웃을 include하여 반복적으로 추가 -->
+        <include layout="@layout/item_post" />
+
+        <include layout="@layout/item_post" />
+
+        <include layout="@layout/item_post" />
+
+    </LinearLayout>
+
+</ScrollView>
