@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <!-- 그동안 쓴 일기와 chatGPT 답장 보기-->
-
-<ScrollView
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
+<!-- 그동안 쓴 일기와 chatGPT 답장 보기-->
+<!-- 하나의 게시물 레이아웃을 include하여 반복적으로 추가 -->
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,17 +10,17 @@ android:layout_height="match_parent">
     android:padding="16dp"
     android:paddingTop="?android:attr/actionBarSize"
     android:background="@color/background_color">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-    <!-- 하나의 게시물 레이아웃을 include하여 반복적으로 추가 -->
+        </ListView>
+    </RelativeLayout>
 
-    <include layout="@layout/item_diary" />
 
-    <include layout="@layout/item_diary" />
 
-    <include layout="@layout/item_diary" />
-
-    <include layout="@layout/item_diary" />
 
 </LinearLayout>
-
-</ScrollView>

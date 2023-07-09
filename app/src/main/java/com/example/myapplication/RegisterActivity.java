@@ -12,10 +12,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
-    private DatabaseReference mDatabaseRef;
+    private FirebaseFirestore mStore;
+
     private EditText et_email, et_pass;
 
     @Override
@@ -24,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("diemo");
+        mStore = FirebaseFirestore.getInstance();
 
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
@@ -36,13 +42,15 @@ public class RegisterActivity extends AppCompatActivity {
 
             mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPass).addOnCompleteListener(RegisterActivity.this, task -> {
                 if (task.isSuccessful()) {
-                    FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
-                    UserAccount account = new UserAccount();
-                    account.setIdToken(firebaseUser.getUid());
-                    account.setEmail(firebaseUser.getEmail());
-                    account.setPassword(strPass);
-
-                    mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
+                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                    if (user != null) {
+                        Map<String, Object> userMap = new HashMap<>();
+                        userMap.put(UserAccount.documentId, user.getUid());
+                        userMap.put(UserAccount.email, strEmail);
+                        userMap.put(UserAccount.password, strPass);
+                        mStore.collection(UserAccount.user).document(user.getUid()).set(userMap, SetOptions.merge());
+                        finish();
+                    }
                     Toast.makeText(RegisterActivity.this, "회원가입에 성공했습니다", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
