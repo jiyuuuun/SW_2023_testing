@@ -1,8 +1,34 @@
 package com.example.myapplication;
 
 public class UserAccount {
-    public static String user = "user";
-    public static String documentId = "documentId";
-    public static String email = "email";
-    public static String password = "password";
+    private String idToken;
+    private String emailId;
+    private String password;
+
+    public UserAccount() {
+    }
+
+    public String getIdToken() {
+        return idToken;
+    }
+
+    public void setIdToken(String idToken) {
+        this.idToken = idToken;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

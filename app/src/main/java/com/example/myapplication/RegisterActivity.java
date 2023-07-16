@@ -10,15 +10,13 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private final FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+    private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mDatabaseRef;
     private EditText et_email, et_pass;
 
     @Override
@@ -28,26 +26,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("diemo");
         findViewById(R.id.btn_register).setOnClickListener(this);
     }
     public void onClick(View v) {
-        mAuth.createUserWithEmailAndPassword(et_email.getText().toString(), et_pass.getText().toString())
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        if (user != null) {
-                            Map<String, Object> userMap = new HashMap<>();
-                            userMap.put(UserAccount.documentId, user.getUid());
-                            userMap.put(UserAccount.email, et_email.getText().toString());
-                            userMap.put(UserAccount.password, et_pass.getText().toString());
-                            mStore.collection(UserAccount.user).document(user.getUid()).set(userMap, SetOptions.merge());
-                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                            Toast.makeText(RegisterActivity.this, "회원 등록에 성공했습니다", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    } else {
-                        Toast.makeText(RegisterActivity.this, "회원 등록에 실패했습니다", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        String strEmail = et_email.getText().toString();
+        String strPass = et_pass.getText().toString();
+
+        mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPass).addOnCompleteListener(RegisterActivity.this, task -> {
+            if (task.isSuccessful()) {
+                FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                UserAccount account = new UserAccount();
+                account.setIdToken(firebaseUser.getUid());
+                account.setEmailId(firebaseUser.getEmail());
+                account.setPassword(strPass);
+
+                mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
+                Toast.makeText(RegisterActivity.this, "회원가입에 성공하셨습니다",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            } else {
+                Toast.makeText(RegisterActivity.this, "회원가입에 실패하셨습니다",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
