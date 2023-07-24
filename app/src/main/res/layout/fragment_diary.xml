@@ -1,11 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="?android:attr/actionBarSize"
     android:background="@color/background_color">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 일기" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_floating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@null"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <!--<TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 일기"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="47dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 기분"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="86dp"
+        android:layout_below="@+id/textView"/>
+
+    <TextView
+        android:id="@+id/selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="선택한 기분"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="86dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:paddingStart="20dp"/>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:lines="20"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="349dp"
+        android:layout_below="@+id/selection"
+        android:hint="오늘 일기 내용"/>-->
+</RelativeLayout>
 

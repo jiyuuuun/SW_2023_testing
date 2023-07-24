@@ -4,6 +4,7 @@ public class UserAccount {
     private String idToken;
     private String emailId;
     private String password;
+    private String nickname;
 
     public UserAccount() {
     }
@@ -30,5 +31,13 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

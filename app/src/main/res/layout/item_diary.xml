@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -29,28 +29,13 @@
             android:textStyle="bold"
             android:text="기분: 00" />
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <TextView
-        android:id="@+id/textViewtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="일기 제목" />
-
-    <TextView
-        android:id="@+id/textViewdiaryContent"
+        android:id="@+id/textDiaryContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:text="일기 내용" />
-
-    <TextView
-        android:id="@+id/textViewCounselResponse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="상담 답변" />
 
 </LinearLayout>

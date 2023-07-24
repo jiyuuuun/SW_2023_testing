@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
-    private EditText et_email, et_pass;
+    private EditText et_email, et_pass, et_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         et_email = findViewById(R.id.et_email);
         et_pass = findViewById(R.id.et_pass);
+        et_name = findViewById(R.id.et_name);
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("diemo");
         findViewById(R.id.btn_register).setOnClickListener(this);
@@ -33,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         String strEmail = et_email.getText().toString();
         String strPass = et_pass.getText().toString();
+        String strName = et_name.getText().toString();
 
         mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPass).addOnCompleteListener(RegisterActivity.this, task -> {
             if (task.isSuccessful()) {
@@ -40,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 UserAccount account = new UserAccount();
                 account.setIdToken(firebaseUser.getUid());
                 account.setEmailId(firebaseUser.getEmail());
+                account.setNickname(strName);
                 account.setPassword(strPass);
 
                 mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
