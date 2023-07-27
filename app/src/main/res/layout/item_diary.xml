@@ -14,13 +14,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="2023년 00월 00일" />
-
-        <TextView
             android:id="@+id/textViewMood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +23,13 @@
             android:text="기분: 00" />
 
     </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="2023년 00월 00일" />
 
     <TextView
         android:id="@+id/textDiaryContent"

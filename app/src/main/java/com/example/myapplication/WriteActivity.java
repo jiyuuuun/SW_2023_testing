@@ -14,6 +14,9 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class WriteActivity extends AppCompatActivity {
     private FirebaseDatabase database;
@@ -46,10 +49,15 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
         btn_write.setOnClickListener(view -> {
+            long mNow = System.currentTimeMillis();
+            Date mDate = new Date(mNow);
+            SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String sDate = mFormat.format(mDate);
             String strContent = et_content.getText().toString();
             String sKey = mDatabaseRef.push().getKey();
             if (sKey != null) {
                 mDatabaseRef.child(sKey).child("content").setValue(strContent);
+                mDatabaseRef.child(sKey).child("date").setValue(sDate);
                 Toast.makeText(WriteActivity.this, "저장 성공", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(WriteActivity.this, DiaryFragment.class);
                 startActivity(intent);

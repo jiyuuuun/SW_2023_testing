@@ -8,12 +8,6 @@
     android:paddingTop="?android:attr/actionBarSize"
     android:background="@color/background_color">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="오늘의 일기" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_floating"
         android:layout_width="match_parent"
@@ -25,15 +19,13 @@
         android:contentDescription="@null"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <!--<TextView
-        android:id="@+id/textView"
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오늘의 일기"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="47dp" />
+        android:text="오늘의 일기"/>
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,5 +58,11 @@
         tools:layout_editor_absoluteY="349dp"
         android:layout_below="@+id/selection"
         android:hint="오늘 일기 내용"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"/>
 </RelativeLayout>
 
