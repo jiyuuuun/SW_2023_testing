@@ -44,10 +44,12 @@ public class WriteAdapter extends RecyclerView.Adapter<WriteAdapter.WriteViewHol
     public class WriteViewHolder extends RecyclerView.ViewHolder {
         TextView textDiaryContent;
         TextView textViewDate;
+        TextView textViewId;
         public WriteViewHolder(@NonNull View itemView) {
             super(itemView);
             this.textDiaryContent = itemView.findViewById(R.id.textDiaryContent);
             this.textViewDate = itemView.findViewById(R.id.textViewDate);
+            this.textViewId = itemView.findViewById(R.id.textViewId);
         }
     }
 }

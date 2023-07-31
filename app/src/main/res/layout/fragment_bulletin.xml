@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:background="@color/background_color">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@color/background_color">
+        android:layout_height="match_parent" />
 
-        <!-- 하나의 게시물 레이아웃을 include하여 반복적으로 추가 -->
-        <include layout="@layout/item_post" />
-
-        <include layout="@layout/item_post" />
-
-        <include layout="@layout/item_post" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,6 +21,7 @@ import java.util.Date;
 
 
 public class WriteActivity extends AppCompatActivity {
+    private FirebaseAuth mFirebaseAuth;
     private FirebaseDatabase database;
     private DatabaseReference mDatabaseRef;
     private RadioGroup radioGroup;
@@ -38,6 +41,8 @@ public class WriteActivity extends AppCompatActivity {
         selection = findViewById(R.id.selection);
         et_content = findViewById(R.id.et_content);
         btn_write = findViewById(R.id.btn_write);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         radioGroup.setOnCheckedChangeListener((radioGroup, i) -> {
             switch (i) {
                 case R.id.radio_happy:
@@ -54,10 +59,12 @@ public class WriteActivity extends AppCompatActivity {
             SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd");
             String sDate = mFormat.format(mDate);
             String strContent = et_content.getText().toString();
+            String sId = firebaseUser.getUid();
             String sKey = mDatabaseRef.push().getKey();
             if (sKey != null) {
                 mDatabaseRef.child(sKey).child("content").setValue(strContent);
                 mDatabaseRef.child(sKey).child("date").setValue(sDate);
+                mDatabaseRef.child(sKey).child("idToken").setValue(sId);
                 Toast.makeText(WriteActivity.this, "저장 성공", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(WriteActivity.this, DiaryFragment.class);
                 startActivity(intent);

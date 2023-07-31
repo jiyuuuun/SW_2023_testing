@@ -1,21 +1,11 @@
 package com.example.myapplication;
-//activity_write에서 넘어가는 정보
 
-import java.util.Date;
-
-public class WriteInfo {
-    private String idToken;
+public class BulletinInfo {
     private String content;
     private String date;
+    private String name;
 
-    public WriteInfo() {}
-
-    public String getIdToken() {
-        return idToken;
-    }
-
-    public void setIdToken(String idToken) {
-        this.idToken = idToken;
+    public BulletinInfo() {
     }
 
     public String getContent() {
@@ -25,12 +15,18 @@ public class WriteInfo {
     public void setContent(String content) {
         this.content = content;
     }
-
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
