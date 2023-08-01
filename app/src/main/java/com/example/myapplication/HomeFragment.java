@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private  ArrayList<WriteInfo> arrayList;
+    private ArrayList<WriteInfo> arrayList;
     private View view;
 
     @Override

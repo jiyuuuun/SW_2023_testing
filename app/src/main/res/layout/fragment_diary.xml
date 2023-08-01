@@ -14,10 +14,17 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         tools:ignore="SpeakableTextPresentCheck"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="390dp"
         android:contentDescription="@null"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="460dp"
+        android:text="일기를 새로 작성하려면 누르세요."
+        android:textAlignment="center"/>
 
     <LinearLayout
         android:id="@+id/linear"

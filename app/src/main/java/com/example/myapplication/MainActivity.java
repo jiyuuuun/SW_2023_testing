@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private DiaryFragment diaryFragment;
     private BulletinFragment bulletinFragment;
     private SettingFragment settingFragment;
+    private ChatbotFragment chatbotFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.bulletin:
                     setFrag(2);
                     break;
-                case R.id.setting:
+                case R.id.chatbot:
                     setFrag(3);
+                    break;
+                case R.id.setting:
+                    setFrag(4);
                     break;
             }
             return true;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         diaryFragment = new DiaryFragment();
         bulletinFragment = new BulletinFragment();
         settingFragment = new SettingFragment();
+        chatbotFragment = new ChatbotFragment();
         setFrag(0);
     }
     private void setFrag(int n) {
@@ -63,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
                 break;
             case 3 :
+                ft.replace(R.id.container, chatbotFragment);
+                ft.commit();
+                break;
+            case 4 :
                 ft.replace(R.id.container, settingFragment);
                 ft.commit();
                 break;
