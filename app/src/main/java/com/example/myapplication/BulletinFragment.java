@@ -56,7 +56,7 @@ public class BulletinFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("HomeFragment", String.valueOf(error.toException()));
+                Log.e("BulletinFragment", String.valueOf(error.toException()));
 
             }
         });

@@ -61,13 +61,17 @@ public class WriteActivity extends AppCompatActivity {
             String strContent = et_content.getText().toString();
             String sId = firebaseUser.getUid();
             String sKey = mDatabaseRef.push().getKey();
-            if (sKey != null) {
-                mDatabaseRef.child(sKey).child("content").setValue(strContent);
-                mDatabaseRef.child(sKey).child("date").setValue(sDate);
-                mDatabaseRef.child(sKey).child("idToken").setValue(sId);
-                Toast.makeText(WriteActivity.this, "저장 성공", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(WriteActivity.this, DiaryFragment.class);
-                startActivity(intent);
+            if (strContent.length() > 0) {
+                if (sKey != null) {
+                    mDatabaseRef.child(sKey).child("content").setValue(strContent);
+                    mDatabaseRef.child(sKey).child("date").setValue(sDate);
+                    mDatabaseRef.child(sKey).child("idToken").setValue(sId);
+                    Toast.makeText(WriteActivity.this, "저장 성공", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(WriteActivity.this, DiaryFragment.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(WriteActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(WriteActivity.this, "저장 실패", Toast.LENGTH_SHORT).show();
             }
