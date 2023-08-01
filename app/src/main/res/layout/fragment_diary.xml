@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="460dp"
-        android:text="일기를 새로 작성하려면 누르세요."
+        android:text="새로운 일기를 작성하려면 누르세요."
         android:textAlignment="center"/>
 
     <LinearLayout
